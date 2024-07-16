@@ -1,6 +1,4 @@
 const cartCards = document.querySelector('.bucket');
-
-
 const dataObjects = "/data.json";
 
 const secFuture = document.querySelector('.cards__wrapper');
@@ -8,7 +6,6 @@ secFuture.addEventListener('mouseover', (event) => {
     if (event.target.className == 'item-img__hover-btn'){
         event.target.onclick = () =>{
             let elementForCart = dataObjects[event.target.id];
-            // console.log(elementForBucket);
             cartCards.insertAdjacentHTML('beforeend', `
             <div class="card">
             <img src="${elementForCart.img}" alt="${elementForCart.title}" class="photo" />
@@ -34,7 +31,7 @@ secFuture.addEventListener('mouseover', (event) => {
 const buttonAllProducts = document.querySelector('.btn-browse');
 buttonAllProducts.addEventListener('click', (ev) => {
     dataObjects.forEach(element => {
-        bucketWithCards.insertAdjacentHTML('beforeend', `
+      cartCards.insertAdjacentHTML('beforeend', `
         <div class="card">
         <img src="${element.img}" alt="${element.title}" class="photo" />
         <div class="info">
@@ -54,7 +51,7 @@ buttonAllProducts.addEventListener('click', (ev) => {
     });
 });
  
-bucketWithCards.addEventListener('mouseover', (event) => {
+cartCards.addEventListener('mouseover', (event) => {
   if (event.target.className === 'button-close' || event.target.className === 'img-close'){
     event.target.onclick = () =>{
       event.target.closest('.card').remove();
